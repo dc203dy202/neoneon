@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public Joystick joystick;
+	public float speed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void Update()
+	{
+		JoystickControl();
+	}
+
+	public void JoystickControl()
+	{
+
+		if (joystick.Vertical > 0)
+		{
+			this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
+		}
+		else if (joystick.Vertical < 0)
+		{
+			this.transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+		}
+		
+		
+	}
 }
